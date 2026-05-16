@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>AI-Конструктор — Telegram-боты с ИИ за 34 занятия</title>
+  <title>AI-Конструктор: Создай МАКС бота с нейросетью за 34 занятия. Без опыта программирования → с продуктом в портфолио</title>
+  <meta name="description" content="AI-Конструктор: Создай МАКС бота с нейросетью за 34 занятия. Без опыта программирования → с продуктом в портфолио. Кружок по AI и МАКС ботам для школьников и студентов.">
 
   <!-- Шрифты: Fira Code для кода/заголовков, Inter для текста -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -135,10 +136,97 @@
       text-decoration: none;
       color: #d4d4d8;
       transition: .3s;
+      font-weight: 500;
     }
 
     nav a:hover {
       color: #00D2FF;
+    }
+
+    /* Бургер-меню */
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 10px;
+      background: none;
+      border: none;
+    }
+
+    .burger-menu span {
+      display: block;
+      width: 28px;
+      height: 2.5px;
+      background: #00D2FF;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(0,210,255,.4);
+    }
+
+    .burger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .burger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Мобильное меню */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      text-decoration: none;
+      color: #d4d4d8;
+      font-size: 24px;
+      font-weight: 500;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .mobile-nav.active a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-nav a:nth-child(2) { transition-delay: 0.2s; }
+    .mobile-nav a:nth-child(3) { transition-delay: 0.3s; }
+    .mobile-nav a:nth-child(4) { transition-delay: 0.4s; }
+    .mobile-nav a:nth-child(5) { transition-delay: 0.5s; }
+
+    .mobile-nav a:hover {
+      color: #00D2FF;
+      transform: scale(1.1);
     }
 
     .btn {
@@ -150,6 +238,8 @@
       transition: .35s;
       position: relative;
       overflow: hidden;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-primary {
@@ -220,6 +310,7 @@
       border: 1px solid rgba(255,255,255,.1);
       color: white;
       backdrop-filter: blur(10px);
+      text-decoration: none;
     }
 
     .btn-secondary:hover {
@@ -673,6 +764,20 @@
       margin-inline: auto;
     }
 
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #00D2FF;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 15px;
+      transition: color 0.2s;
+    }
+    .download-link:hover {
+      color: #A855F7;
+    }
+
     @media(max-width: 1100px) {
       .hero, .telegram-section, .contact-box {
         grid-template-columns: 1fr;
@@ -681,12 +786,474 @@
       .hero h2 { font-size: 58px; }
     }
 
+    @media(max-width: 990px) {
+        .header-content {
+            display: grid;
+            grid-template-columns: 300px auto;
+            row-gap: 20px;
+        }
+    }
+
+    /* ========== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ========== */
     @media(max-width: 768px) {
-      nav { display: none; }
-      .cards, .facts, .stats { grid-template-columns: 1fr; }
-      .hero h2, .section-title h2 { font-size: 42px; }
-      .contact-box { padding: 40px; }
-      .avatar { width: 260px; height: 260px; }
+      /* Общие стили */
+      .container {
+        width: 92%;
+        padding: 0 4%;
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
+      /* Хедер */
+      .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        flex-direction: row;
+      }
+
+      .logo {
+        width: auto;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 12px;
+      }
+
+      .logo h1 {
+        font-size: 18px;
+      }
+
+      .logo p {
+        font-size: 11px !important;
+      }
+
+      /* Десктопное меню скрываем */
+      nav {
+        display: none;
+      }
+
+      /* Показываем бургер */
+      .burger-menu {
+        display: flex;
+      }
+
+      /* Мобильное меню показываем */
+      .mobile-nav {
+        display: flex;
+      }
+
+      /* Кнопку в хедере скрываем */
+      .header-content > div:last-child {
+        display: none;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      /* Hero */
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 0;
+        min-height: auto;
+      }
+
+      .hero-badge {
+        font-size: 12px;
+        padding: 8px 15px;
+        margin-bottom: 20px;
+      }
+
+      .hero h2 {
+        font-size: 36px !important;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .hero p {
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Статистика */
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .stat-card {
+        padding: 15px 10px;
+        text-align: center;
+        border-radius: 16px;
+      }
+
+      .stat-card h3 {
+        font-size: 24px;
+      }
+
+      .stat-card span {
+        font-size: 11px;
+      }
+
+      /* AI Window */
+      .ai-window {
+        border-radius: 20px;
+      }
+
+      .window-body {
+        padding: 15px;
+        min-height: auto;
+      }
+
+      .message {
+        padding: 15px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+      }
+
+      .terminal-line {
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+
+      /* Секции */
+      .section-title {
+        margin-bottom: 40px;
+      }
+
+      .section-title p {
+        font-size: 12px;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+      }
+
+      .section-title h2 {
+        font-size: 28px !important;
+        line-height: 1.3;
+      }
+
+      /* Карточки */
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        padding: 25px;
+        border-radius: 24px;
+      }
+
+      .card::after {
+        font-size: 80px;
+      }
+
+      .card-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
+
+      .card h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      .card p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Telegram section */
+      .telegram-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .telegram-phone {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 30px;
+      }
+
+      .phone-body {
+        padding: 20px;
+        min-height: auto;
+      }
+
+      .tech-stack {
+        gap: 10px;
+        margin-top: 25px;
+      }
+
+      .tech {
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      /* Модули плана */
+      .module {
+        padding: 25px;
+        border-radius: 24px;
+        margin-bottom: 20px;
+      }
+
+      .module h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .module p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .module-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+        border-radius: 12px;
+      }
+
+      .module.open .lessons-list {
+        padding-top: 25px;
+      }
+
+      .lessons-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .lesson-item {
+        padding: 14px 16px;
+        border-radius: 14px;
+        gap: 10px;
+      }
+
+      .lesson-num {
+        font-size: 16px;
+        min-width: 35px;
+      }
+
+      .lesson-text {
+        font-size: 14px;
+      }
+
+      /* Факты */
+      .facts {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .fact {
+        padding: 25px 15px;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .fact h3 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      .fact p {
+        font-size: 13px;
+      }
+
+      /* FAQ */
+      .faq-item {
+        padding: 20px;
+        border-radius: 16px;
+        margin-bottom: 15px;
+      }
+
+      .faq-item h3 {
+        font-size: 16px;
+      }
+
+      .faq-answer {
+        font-size: 14px;
+      }
+
+      /* Контакты */
+      .contact-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 30px;
+        border-radius: 30px;
+      }
+
+      .avatar {
+        width: 200px;
+        height: 200px;
+      }
+
+      .teacher-info__body {
+        padding-top: 30px;
+      }
+
+      .teacher-info__body p {
+        font-size: 16px !important;
+        margin-bottom: 5px !important;
+      }
+
+      .teacher-info__body p:last-child {
+        font-size: 13px !important;
+      }
+
+      /* Footer */
+      footer {
+        padding: 25px 0;
+        font-size: 13px;
+      }
+    }
+
+    /* ========== ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (340px - 400px) ========== */
+    @media(max-width: 400px) {
+      .container {
+        width: 95%;
+        padding: 8px 2.5%;
+      }
+
+      .hero h2 {
+        font-size: 28px !important;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .hero-badge {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .stat-card {
+        padding: 10px 8px;
+        border-radius: 12px;
+      }
+
+      .stat-card h3 {
+        font-size: 20px;
+      }
+
+      .stat-card span {
+        font-size: 10px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .card-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .card h3 {
+        font-size: 20px;
+      }
+
+      .card p {
+        font-size: 13px;
+      }
+
+      .module {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .module h3 {
+        font-size: 18px;
+      }
+
+      .module p {
+        font-size: 13px;
+      }
+
+      .lesson-item {
+        padding: 12px 14px;
+      }
+
+      .lesson-num {
+        font-size: 14px;
+        min-width: 30px;
+      }
+
+      .lesson-text {
+        font-size: 13px;
+      }
+
+      .facts {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .fact {
+        padding: 20px 10px;
+      }
+
+      .fact h3 {
+        font-size: 28px;
+      }
+
+      .fact p {
+        font-size: 12px;
+      }
+
+      .contact-box {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .avatar {
+        width: 160px;
+        height: 160px;
+      }
+
+      .btn {
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+
+      .tech {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -700,17 +1267,39 @@
         <div class="logo-icon">A</div>
         <div>
           <h1>AI-КОНСТРУКТОР</h1>
-          <p style="color:#71717a;font-size:13px;">Telegram + AI + Education</p>
+          <p style="color:#71717a;font-size:13px;">МАКС + AI + Education</p>
         </div>
       </div>
+      
+      <!-- Десктопное меню -->
       <nav>
-        <a href="#about">О кружке</a>
+        <a href="#about">Цели и задачи</a>
         <a href="#projects">Проекты</a>
         <a href="#plan">План</a>
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <a href="mailto:alenakuper1990@gmail.com" class="btn btn-primary">Связаться</a>
+      
+      <!-- Бургер-меню -->
+      <button class="burger-menu" id="burgerBtn" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <div>
+        <a href="mailto:alenakuper1990@gmail.com" class="btn btn-primary">Записаться</a>
+      </div>
+    </div>
+    
+    <!-- Мобильное меню -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">Цели и задачи</a>
+      <a href="#projects">Проекты</a>
+      <a href="#plan">План</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacts">Контакты</a>
+      <a href="mailto:alenakuper1990@gmail.com" class="btn btn-primary" style="margin-top:20px;">Записаться</a>
     </div>
   </header>
 
@@ -718,17 +1307,17 @@
     <div>
       <div class="hero-badge">⚡ Образовательная AI-лаборатория нового поколения</div>
       <h2>AI-<span class="gradient-text">КОНСТРУКТОР</span></h2>
-      <p>→ Собери своего Telegram-бота с искусственным интеллектом</p>
+      <p>→ Собери своего МАКС бота с искусственным интеллектом</p>
       <p>→ 34 занятия → 1 живой продукт → Портфолио в резюме</p>
       <p>→ Без опыта программирования → с настоящим AI-проектом</p>
       <div class="hero-buttons">
-        <button class="btn btn-primary">Подробнее</button>
-        <button class="btn btn-secondary">Смотреть программу</button>
+        <a href="#plan" class="btn btn-primary">Подробнее</a>
+        <a href="#plan" class="btn btn-secondary">Смотреть программу</a>
       </div>
       <div class="stats">
         <div class="stat-card"><h3>34</h3><span>занятия</span></div>
         <div class="stat-card"><h3>100%</h3><span>практика</span></div>
-        <div class="stat-card"><h3>AI</h3><span>Telegram Bots</span></div>
+        <div class="stat-card"><h3>AI</h3><span>МАКС Боты</span></div>
       </div>
     </div>
     <div class="ai-window">
@@ -738,8 +1327,8 @@
       </div>
       <div class="window-body">
         <div class="terminal-line">> initializing neural system...</div>
-        <div class="message user"><h4>user:</h4><p>Создай Telegram-бота с ИИ</p></div>
-        <div class="message ai"><h4>AI response:</h4><p>✔ Python environment configured</p><p>✔ Telegram API connected</p><p>✔ AI brain activated</p><p>✔ Memory module online</p></div>
+        <div class="message user"><h4>user:</h4><p>Создай МАКС бота с ИИ</p></div>
+        <div class="message ai"><h4>AI response:</h4><p>✔ Python environment configured</p><p>✔ МАКС API connected</p><p>✔ AI brain activated</p><p>✔ Memory module online</p></div>
         <div class="message ai"><h4>Live Bot Simulation</h4><p>Привет! Я твой AI-помощник 👋</p><br><p>Какая завтра первая пара?</p><br><p>Завтра в 9:00 — Программирование ⚡</p></div>
         <div class="typing"><span>></span><span class="cursor">_</span></div>
       </div>
@@ -750,9 +1339,9 @@
     <div class="container">
       <div class="section-title"><p>Цели и задачи</p><h2>Почему этот кружок — <span class="gradient-text">будущее IT-образования</span></h2></div>
       <div class="cards">
-        <div class="card"><div class="card-icon">⚡</div><h3>Практика</h3><p>Создание AI-ботов, работающих в Telegram и подключённых к нейросетям.</p></div>
+        <div class="card"><div class="card-icon">⚡</div><h3>Практика</h3><p>Создание AI-ботов, работающих в МАКС и подключённых к нейросетям.</p></div>
         <div class="card"><div class="card-icon">🚀</div><h3>Портфолио</h3><p>Каждый студент создаёт собственный AI-проект, который можно показать работодателю.</p></div>
-        <div class="card"><div class="card-icon">🧠</div><h3>Навыки будущего</h3><p>Python, Telegram API, GitHub, RAG-системы и AI-агенты.</p></div>
+        <div class="card"><div class="card-icon">🧠</div><h3>Навыки будущего</h3><p>Python, МАКС API, GitHub, RAG-системы и AI-агенты.</p></div>
       </div>
     </div>
   </section>
@@ -764,10 +1353,10 @@
         <p style="color:#a1a1aa; font-size:20px; line-height:1.8; margin-bottom:20px;">✔ Бот отвечает как настоящий AI-ассистент</p>
         <p style="color:#a1a1aa; font-size:20px; line-height:1.8; margin-bottom:20px;">✔ Помнит контекст разговора</p>
         <p style="color:#a1a1aa; font-size:20px; line-height:1.8; margin-bottom:20px;">✔ Работает с документами и знаниями</p>
-        <div class="tech-stack"><div class="tech">Python</div><div class="tech">Telegram API</div><div class="tech">YandexGPT</div><div class="tech">GitHub</div><div class="tech">RAG</div></div>
+        <div class="tech-stack"><div class="tech">Python</div><div class="tech">МАКС API</div><div class="tech">YandexGPT</div><div class="tech">GitHub</div><div class="tech">RAG</div></div>
       </div>
       <div class="telegram-phone">
-        <div class="phone-top">Telegram</div>
+        <div class="phone-top">МАКС</div>
         <div class="phone-body"><div class="bubble ai">Привет! Я твой AI-помощник 👋</div><div class="bubble user">Какая завтра первая пара?</div><div class="bubble ai">Завтра в 9:00 — Программирование ⚡</div></div>
       </div>
     </div>
@@ -777,7 +1366,7 @@
     <div class="container">
       <div class="section-title"><p>Кейсы студентов</p><h2>Реальные проекты, <span class="gradient-text">которыми можно гордиться</span></h2></div>
       <div class="cards">
-        <div class="card"><div class="card-icon">AI</div><h3>AI-Бот расписания</h3><p>Telegram-бот, который отвечает на вопросы о расписании и дедлайнах.</p></div>
+        <div class="card"><div class="card-icon">AI</div><h3>AI-Бот расписания</h3><p>МАКС бот, который отвечает на вопросы о расписании и дедлайнах.</p></div>
         <div class="card"><div class="card-icon">AI</div><h3>AI-помощник для учёбы</h3><p>Нейросеть помогает решать задачи и объяснять сложные темы.</p></div>
         <div class="card"><div class="card-icon">AI</div><h3>RAG-Бот</h3><p>Система поиска ответов по базе знаний школы или компании.</p></div>
       </div>
@@ -797,7 +1386,7 @@
         <div class="module-header">
           <div>
             <h3>МОДУЛЬ 1 — Инструменты профессионала</h3>
-            <p>Текстовые нейросети, генерация изображений, AI-аудио, компьютерное зрение и Excel + AI.</p>
+            <p>Текстовые нейросети, генерация изображений, AI-аудио, компьютерное зрение и Excel + AI. (Занятия 1–9)</p>
           </div>
           <div class="module-arrow">▼</div>
         </div>
@@ -819,13 +1408,13 @@
         <div class="module-header">
           <div>
             <h3>МОДУЛЬ 2 — Создание продукта</h3>
-            <p>Python, Telegram API, подключение нейросети, память, RAG-системы и AI-агенты.</p>
+            <p>Python, МАКС API, подключение нейросети, память, RAG-системы и AI-агенты. (Занятия 10–17)</p>
           </div>
           <div class="module-arrow">▼</div>
         </div>
         <div class="lessons-list">
           <div class="lesson-item"><span class="lesson-num">10</span><span class="lesson-text">«Python с нуля для ботов: Только нужное»</span></div>
-          <div class="lesson-item"><span class="lesson-num">11</span><span class="lesson-text">«Первый Telegram-бот: Эхо»</span></div>
+          <div class="lesson-item"><span class="lesson-num">11</span><span class="lesson-text">«Первый МАКС бот: Эхо»</span></div>
           <div class="lesson-item"><span class="lesson-num">12</span><span class="lesson-text">«Подключаем ИИ-мозг: Бот перестаёт быть глупым»</span></div>
           <div class="lesson-item"><span class="lesson-num">13</span><span class="lesson-text">«Память для бота: Диалог не с чистого листа»</span></div>
           <div class="lesson-item"><span class="lesson-num">14</span><span class="lesson-text">«RAG-системы: Умный бот по вашим документам»</span></div>
@@ -840,7 +1429,7 @@
         <div class="module-header">
           <div>
             <h3>МОДУЛЬ 3 — Проектная деятельность</h3>
-            <p>MVP, GitHub, тестирование, командная работа и разработка продукта.</p>
+            <p>MVP, GitHub, тестирование, командная работа и разработка продукта. (Занятия 18–26)</p>
           </div>
           <div class="module-arrow">▼</div>
         </div>
@@ -860,7 +1449,7 @@
         <div class="module-header">
           <div>
             <h3>МОДУЛЬ 4 — Защита и упаковка</h3>
-            <p>Портфолио, Demo Day, участие в хакатонах и публикация проектов.</p>
+            <p>Портфолио, Demo Day, участие в хакатонах и публикация проектов. (Занятия 27–34)</p>
           </div>
           <div class="module-arrow">▼</div>
         </div>
@@ -915,7 +1504,11 @@
               alenakuper1990@gmail.com
               </p>
 
-              <a href="mailto:alenakuper1990@gmail.com" class="btn btn-primary">Подать заявку</a>
+              <a href="mailto:alenakuper1990@gmail.com" class="btn btn-primary" style="margin-bottom: 20px;">Подать заявку</a>
+              <br>
+              <a href="individual_plan.pdf" download class="download-link" target="_blank">
+                <span>📥</span> Скачать индивидуальный план кружка
+              </a>
           </div>
           
           <!-- Фото + имя в одной строке -->
@@ -936,7 +1529,7 @@
     </div>
     </section>
 
-  <footer>© 2026 AI-Конструктор — Telegram + AI + Education</footer>
+  <footer>© 2026 AI-Конструктор — МАКС + AI + Education</footer>
 
   <div id="scrollProgress" style="position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#00D2FF,#A855F7);z-index:99999;width:0%;box-shadow:0 0 20px #00D2FF;"></div>
 
@@ -947,6 +1540,27 @@
       const matrixCanvas = document.getElementById('matrixCanvas');
       const ctx = matrixCanvas.getContext('2d');
       const scrollProgress = document.getElementById('scrollProgress');
+      const burgerBtn = document.getElementById('burgerBtn');
+      const mobileNav = document.getElementById('mobileNav');
+
+      // Бургер-меню
+      if (burgerBtn && mobileNav) {
+        burgerBtn.addEventListener('click', function() {
+          this.classList.toggle('active');
+          mobileNav.classList.toggle('active');
+          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Закрытие меню при клике на ссылку
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            burgerBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
       // Canvas resize
       function resizeCanvas() {
@@ -1061,10 +1675,9 @@
         });
       });
 
-      // *** НОВОЕ: АККОРДЕОН ДЛЯ МОДУЛЕЙ ПЛАНА ***
+      // Аккордеон для модулей плана
       document.querySelectorAll('.module').forEach(function(module) {
         module.addEventListener('click', function(e) {
-          // Не реагируем на вложенные элементы (например, если пользователь кликнул по занятию)
           if (e.target.closest('.lesson-item')) return;
           this.classList.toggle('open');
         });
